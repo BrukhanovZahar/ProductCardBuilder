@@ -1,0 +1,84 @@
+syntax = "proto3";
+package market.snippet.v1;
+
+option java_package = "com.snippets.proto";
+option java_multiple_files = true;
+
+enum EThemeType {
+  UNKNOWN_THEME = 0;
+  GRID_FEED     = 1;
+  GRID_VISUAL   = 2;
+  GRID_FULL     = 3;
+  LIST_SHORT    = 4;
+  LIST_CART     = 5;
+}
+
+enum ESurface {
+  UNKNOWN_SURFACE = 0;
+  SEARCH          = 1;
+  CART            = 2;
+  MODEL_CARD      = 3;
+}
+
+message TitlePayload {
+  string text = 1;
+}
+
+message GalleryPayload {
+  repeated string image_urls = 1;
+}
+
+message PricePayload {
+  int64  current_price  = 1;
+  int64  original_price = 2;
+  string currency       = 3;
+}
+
+message SignalPayload {
+  string text        = 1;
+  string signal_type = 2;
+}
+
+message RatingPayload {
+  float value = 1;
+  int32 count = 2;
+}
+
+message CartButtonPayload {
+  string offer_id = 1;
+  bool   in_cart  = 2;
+}
+
+message DeliveryPayload {
+  string text = 1;
+}
+
+message TProductSnippetPayload {
+  TitlePayload      title       = 1;
+  GalleryPayload    gallery     = 2;
+  PricePayload      price       = 3;
+  RatingPayload     rating      = 4;
+  CartButtonPayload cart_button = 5;
+  DeliveryPayload   delivery    = 6;
+  SignalPayload     signal      = 7;
+}
+
+message TProductSnippet {
+  string                 snippet_id      = 1;
+  EThemeType             theme_type      = 2;
+  TProductSnippetPayload product_payload = 3;
+}
+
+message GetSnippetsRequest {
+  repeated string offer_ids      = 1;
+  ESurface        surface        = 2;
+  string          theme_override = 3;
+}
+
+message GetSnippetsResponse {
+  repeated TProductSnippet snippets = 1;
+}
+
+service MarketSnippetService {
+  rpc GetSnippets(GetSnippetsRequest) returns (GetSnippetsResponse);
+}
