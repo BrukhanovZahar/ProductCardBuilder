@@ -1,1 +1,4 @@
 .idea/
+product-card-service/build/
+product-card-service/cmake-build-debug/
+product-card-service/cmake-build-release/

@@ -1,5 +1,5 @@
 #pragma once
-#include "snippet_service.pb.h"
+#include "product_card_service.pb.h"
 #include "../data/product_data.h"
 #include "../const/theme_configs.h"
 
