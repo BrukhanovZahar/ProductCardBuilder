@@ -13,7 +13,7 @@ class SignalComponentConfig : CardComponentConfig {
 
 class SignalComponent(private val text: String, private val color: String) : CardComponent {
     override fun render(): Map<String, Any> = mapOf(
-        "type"       to "div_text",
+        "type"       to "text",
         "text"       to text,
         "font_size"  to 11,
         "text_color" to color,

@@ -19,7 +19,7 @@ class GalleryComponent(
     private val heightDp: Int
 ) : CardComponent {
     override fun render(): Map<String, Any> = mapOf(
-        "type"      to "div_image",
+        "type"      to "image",
         "image_url" to imageUrl,
         "width"     to mapOf("type" to "match_parent"),
         "height"    to mapOf("type" to "fixed", "value" to heightDp),

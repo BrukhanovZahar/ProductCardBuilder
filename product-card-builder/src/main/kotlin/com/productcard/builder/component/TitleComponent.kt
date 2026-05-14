@@ -13,7 +13,7 @@ class TitleComponentConfig(private val maxLines: Int = 2) : CardComponentConfig 
 
 class TitleComponent(private val text: String, private val maxLines: Int) : CardComponent {
     override fun render(): Map<String, Any> = mapOf(
-        "type"       to "div_text",
+        "type"       to "text",
         "text"       to text,
         "font_size"  to 13,
         "max_lines"  to maxLines,

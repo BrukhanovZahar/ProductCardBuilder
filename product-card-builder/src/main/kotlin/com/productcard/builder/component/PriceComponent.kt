@@ -20,7 +20,7 @@ class PriceComponent(
         val sym = if (currency == "RUB") "₽" else currency
         val items = mutableListOf<Map<String, Any>>(
             mapOf(
-                "type"        to "div_text",
+                "type"        to "text",
                 "text"        to "${formatPrice(current)} $sym",
                 "font_size"   to 15,
                 "font_weight" to "bold",
@@ -29,7 +29,7 @@ class PriceComponent(
         )
         if (original > current && original > 0) {
             items += mapOf(
-                "type"       to "div_text",
+                "type"       to "text",
                 "text"       to "${formatPrice(original)} $sym",
                 "font_size"  to 12,
                 "text_color" to "#999999",
@@ -38,7 +38,7 @@ class PriceComponent(
             )
         }
         return mapOf(
-            "type"        to "div_container",
+            "type"        to "container",
             "orientation" to "horizontal",
             "paddings"    to mapOf("left" to 8, "right" to 8, "top" to 4),
             "items"       to items

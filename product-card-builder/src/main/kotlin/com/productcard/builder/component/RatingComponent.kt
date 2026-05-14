@@ -17,7 +17,7 @@ class RatingComponent(private val value: Float, private val count: Int) : CardCo
         val stars = "★".repeat(full) + "☆".repeat(empty)
         val countPart = if (count > 0) " $count" else ""
         return mapOf(
-            "type"       to "div_text",
+            "type"       to "text",
             "text"       to "$stars ${"%.1f".format(value)}$countPart",
             "font_size"  to 11,
             "text_color" to "#FF6600",

@@ -12,7 +12,7 @@ class CartButtonComponentConfig : CardComponentConfig {
 
 class CartButtonComponent(private val inCart: Boolean) : CardComponent {
     override fun render(): Map<String, Any> = mapOf(
-        "type"                         to "div_container",
+        "type"                         to "container",
         "orientation"                  to "horizontal",
         "content_alignment_horizontal" to "center",
         "content_alignment_vertical"   to "center",
@@ -22,7 +22,7 @@ class CartButtonComponent(private val inCart: Boolean) : CardComponent {
         "border"     to mapOf("corner_radius" to 8),
         "margins"    to mapOf("left" to 8, "right" to 8, "top" to 4, "bottom" to 4),
         "items"      to listOf(mapOf(
-            "type"        to "div_text",
+            "type"        to "text",
             "text"        to if (inCart) "В корзине" else "В корзину",
             "font_size"   to 13,
             "font_weight" to "bold",

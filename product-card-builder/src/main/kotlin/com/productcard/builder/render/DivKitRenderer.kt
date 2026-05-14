@@ -14,8 +14,7 @@ class DivKitRenderer {
         val card = if (config.isHorizontal) buildHorizontalCard(components, config.widthDp)
                    else buildVerticalCard(components, config.widthDp)
         return mapOf(
-            "log_id"    to "card_${context.offerId}",
-            "card"      to card,
+            "card"      to (card + mapOf("log_id" to "card_${context.offerId}")),
             "templates" to emptyMap<String, Any>()
         )
     }
@@ -25,7 +24,7 @@ class DivKitRenderer {
         widthDp: Int
     ): Map<String, Any> {
         val div = mapOf(
-            "type"        to "div_container",
+            "type"        to "container",
             "orientation" to "vertical",
             "width"       to mapOf("type" to "fixed", "value" to widthDp),
             "background"  to listOf(mapOf("type" to "solid", "color" to "#FFFFFF")),
@@ -48,7 +47,7 @@ class DivKitRenderer {
         val allItems = buildList {
             if (imageItem != null) add(imageItem)
             add(mapOf(
-                "type"        to "div_container",
+                "type"        to "container",
                 "orientation" to "vertical",
                 "width"       to mapOf("type" to "match_parent"),
                 "paddings"    to mapOf("left" to 8),
@@ -57,7 +56,7 @@ class DivKitRenderer {
         }
 
         val div = mapOf(
-            "type"        to "div_container",
+            "type"        to "container",
             "orientation" to "horizontal",
             "width"       to mapOf("type" to "fixed", "value" to widthDp),
             "background"  to listOf(mapOf("type" to "solid", "color" to "#FFFFFF")),
