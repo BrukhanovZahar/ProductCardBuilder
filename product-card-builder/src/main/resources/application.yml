@@ -1,7 +1,7 @@
 server:
   port: 8080
 
-snippet-service:
+card-service:
   host: localhost
   port: 50051
 

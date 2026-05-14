@@ -1,8 +1,8 @@
 package com.productcard.builder.model
 
-import com.snippets.proto.EThemeType
+import com.productcard.proto.EThemeType
 
-enum class ServiceSnippetThemeType(val protoValue: EThemeType) {
+enum class CardThemeType(val protoValue: EThemeType) {
     GRID_FEED(EThemeType.GRID_FEED),
     GRID_VISUAL(EThemeType.GRID_VISUAL),
     GRID_FULL(EThemeType.GRID_FULL),
@@ -11,7 +11,7 @@ enum class ServiceSnippetThemeType(val protoValue: EThemeType) {
     UNKNOWN(EThemeType.UNKNOWN_THEME);
 
     companion object {
-        fun from(proto: EThemeType): ServiceSnippetThemeType =
+        fun from(proto: EThemeType): CardThemeType =
             values().firstOrNull { it.protoValue == proto } ?: UNKNOWN
     }
 }

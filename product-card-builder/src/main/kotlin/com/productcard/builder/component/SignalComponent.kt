@@ -1,9 +1,9 @@
 package com.productcard.builder.component
 
-import com.productcard.builder.model.DiscoverySnippetConfigContext
+import com.productcard.builder.model.CardRenderContext
 
-class SignalComponentConfig : ProductSnippetComponentVisualConfig {
-    override fun createComponent(context: DiscoverySnippetConfigContext): SnippetComponent? {
+class SignalComponentConfig : CardComponentConfig {
+    override fun createComponent(context: CardRenderContext): CardComponent? {
         val s = context.payload.signal
         if (s.text.isBlank()) return null
         val color = if (s.signalType == "CUSTOMS") "#0055CC" else "#FF6600"
@@ -11,7 +11,7 @@ class SignalComponentConfig : ProductSnippetComponentVisualConfig {
     }
 }
 
-class SignalComponent(private val text: String, private val color: String) : SnippetComponent {
+class SignalComponent(private val text: String, private val color: String) : CardComponent {
     override fun render(): Map<String, Any> = mapOf(
         "type"       to "div_text",
         "text"       to text,

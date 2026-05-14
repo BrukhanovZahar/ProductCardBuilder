@@ -6,7 +6,7 @@ class OfferBasedBuilder {
 public:
     explicit OfferBasedBuilder(const ProductData& data) : data_(data) {}
     virtual ~OfferBasedBuilder() = default;
-    virtual void Build(market::snippet::v1::TProductSnippet& snippet) const = 0;
+    virtual void Build(card::v1::TProductCard& card) const = 0;
 protected:
     const ProductData& data_;
 };

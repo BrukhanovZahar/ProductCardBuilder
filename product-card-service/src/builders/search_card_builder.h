@@ -1,6 +1,6 @@
 #pragma once
 #include "base_card_builder.h"
-class ModelCardBuilder : public BaseCardBuilder {
+class SearchCardBuilder : public BaseCardBuilder {
 public:
     using BaseCardBuilder::BaseCardBuilder;
 };

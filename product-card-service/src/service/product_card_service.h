@@ -1,16 +1,16 @@
 #pragma once
 #include "product_card_service.grpc.pb.h"
 #include "../data/product_loader.h"
-#include "../handler/get_snippets_handler.h"
+#include "../handler/get_cards_handler.h"
 
 class ProductCardServiceImpl final
-    : public market::snippet::v1::MarketSnippetService::Service {
+    : public card::v1::CardService::Service {
 public:
     explicit ProductCardServiceImpl(const ProductLoader& loader);
-    grpc::Status GetSnippets(
+    grpc::Status GetCards(
         grpc::ServerContext* ctx,
-        const market::snippet::v1::GetSnippetsRequest* req,
-        market::snippet::v1::GetSnippetsResponse* resp) override;
+        const card::v1::GetCardsRequest* req,
+        card::v1::GetCardsResponse* resp) override;
 private:
-    GetSnippetsHandler handler_;
+    GetCardsHandler handler_;
 };

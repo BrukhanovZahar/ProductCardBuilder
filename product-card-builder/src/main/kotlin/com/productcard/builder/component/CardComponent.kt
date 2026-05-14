@@ -1,5 +1,5 @@
 package com.productcard.builder.component
 
-interface SnippetComponent {
+interface CardComponent {
     fun render(): Map<String, Any>
 }

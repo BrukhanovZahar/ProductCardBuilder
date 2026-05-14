@@ -3,5 +3,5 @@
 class TitleBuilder : public OfferBasedBuilder {
 public:
     using OfferBasedBuilder::OfferBasedBuilder;
-    void Build(market::snippet::v1::TProductSnippet& snippet) const override;
+    void Build(card::v1::TProductCard& card) const override;
 };

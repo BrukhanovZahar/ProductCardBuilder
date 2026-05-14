@@ -1,31 +1,31 @@
 package com.productcard.builder.client
 
-import com.snippets.proto.ESurface
-import com.snippets.proto.GetSnippetsRequest
-import com.snippets.proto.GetSnippetsResponse
-import com.snippets.proto.MarketSnippetServiceGrpc
+import com.productcard.proto.ESurface
+import com.productcard.proto.GetCardsRequest
+import com.productcard.proto.GetCardsResponse
+import com.productcard.proto.CardServiceGrpc
 import io.grpc.ManagedChannelBuilder
 import jakarta.annotation.PreDestroy
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 
 @Component
-class SnippetServiceGrpcClient(
-    @Value("\${snippet-service.host:localhost}") host: String,
-    @Value("\${snippet-service.port:50051}")     port: Int
+class CardServiceGrpcClient(
+    @Value("\${card-service.host:localhost}") host: String,
+    @Value("\${card-service.port:50051}")     port: Int
 ) {
     private val channel = ManagedChannelBuilder.forAddress(host, port)
         .usePlaintext()
         .build()
-    private val stub = MarketSnippetServiceGrpc.newBlockingStub(channel)
+    private val stub = CardServiceGrpc.newBlockingStub(channel)
 
-    fun getSnippets(
+    fun getCards(
         offerIds:      List<String>,
         surface:       ESurface,
         themeOverride: String = ""
-    ): GetSnippetsResponse =
-        stub.getSnippets(
-            GetSnippetsRequest.newBuilder()
+    ): GetCardsResponse =
+        stub.getCards(
+            GetCardsRequest.newBuilder()
                 .addAllOfferIds(offerIds)
                 .setSurface(surface)
                 .setThemeOverride(themeOverride)

@@ -3,14 +3,14 @@ package com.productcard.builder.factory
 import com.productcard.builder.component.GalleryComponentConfig
 import com.productcard.builder.component.TitleComponentConfig
 import com.productcard.builder.component.PriceComponentConfig
-import com.productcard.builder.model.DiscoverySnippetConfig
-import com.productcard.builder.model.ServiceSnippetThemeType
+import com.productcard.builder.model.CardRenderConfig
+import com.productcard.builder.model.CardThemeType
 import org.springframework.stereotype.Component
 
 @Component
 class FallbackConfigProvider {
-    fun createFallbackConfig() = DiscoverySnippetConfig(
-        themeType        = ServiceSnippetThemeType.GRID_FEED,
+    fun createFallbackConfig() = CardRenderConfig(
+        themeType        = CardThemeType.GRID_FEED,
         componentConfigs = listOf(
             GalleryComponentConfig(160, 160),
             TitleComponentConfig(2),

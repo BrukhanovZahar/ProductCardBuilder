@@ -1,7 +1,7 @@
 syntax = "proto3";
-package market.snippet.v1;
+package card.v1;
 
-option java_package = "com.snippets.proto";
+option java_package = "com.productcard.proto";
 option java_multiple_files = true;
 
 enum EThemeType {
@@ -53,7 +53,7 @@ message DeliveryPayload {
   string text = 1;
 }
 
-message TProductSnippetPayload {
+message TProductCardPayload {
   TitlePayload      title       = 1;
   GalleryPayload    gallery     = 2;
   PricePayload      price       = 3;
@@ -63,22 +63,22 @@ message TProductSnippetPayload {
   SignalPayload     signal      = 7;
 }
 
-message TProductSnippet {
-  string                 snippet_id      = 1;
-  EThemeType             theme_type      = 2;
-  TProductSnippetPayload product_payload = 3;
+message TProductCard {
+  string              card_id         = 1;
+  EThemeType          theme_type      = 2;
+  TProductCardPayload product_payload = 3;
 }
 
-message GetSnippetsRequest {
+message GetCardsRequest {
   repeated string offer_ids      = 1;
   ESurface        surface        = 2;
   string          theme_override = 3;
 }
 
-message GetSnippetsResponse {
-  repeated TProductSnippet snippets = 1;
+message GetCardsResponse {
+  repeated TProductCard cards = 1;
 }
 
-service MarketSnippetService {
-  rpc GetSnippets(GetSnippetsRequest) returns (GetSnippetsResponse);
+service CardService {
+  rpc GetCards(GetCardsRequest) returns (GetCardsResponse);
 }

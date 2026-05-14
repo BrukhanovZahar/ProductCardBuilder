@@ -1,8 +1,8 @@
 #include "theme_utils.h"
 #include <unordered_map>
 
-using market::snippet::v1::EThemeType;
-using market::snippet::v1::ESurface;
+using card::v1::EThemeType;
+using card::v1::ESurface;
 
 EThemeType GetThemeType(ESurface surface, const std::string& theme_override) {
     if (!theme_override.empty()) {

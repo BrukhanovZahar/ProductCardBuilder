@@ -16,4 +16,4 @@ static ThemeConfig MakeFallbackConfig() {
 static const ThemeConfig kFallbackConfig = MakeFallbackConfig();
 
 FallbackBuilder::FallbackBuilder(const ProductData& data)
-    : BaseSnippetBuilder(data, kFallbackConfig) {}
+    : BaseCardBuilder(data, kFallbackConfig) {}

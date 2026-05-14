@@ -1,10 +1,10 @@
 package com.productcard.builder.component
 
-import com.productcard.builder.model.DiscoverySnippetConfigContext
+import com.productcard.builder.model.CardRenderContext
 
-class PriceComponentConfig : ProductSnippetComponentVisualConfig {
+class PriceComponentConfig : CardComponentConfig {
     override val isRequired = true
-    override fun createComponent(context: DiscoverySnippetConfigContext): SnippetComponent? {
+    override fun createComponent(context: CardRenderContext): CardComponent? {
         val p = context.payload.price
         if (p.currentPrice == 0L) return null
         return PriceComponent(p.currentPrice, p.originalPrice, p.currency)
@@ -15,7 +15,7 @@ class PriceComponent(
     private val current: Long,
     private val original: Long,
     private val currency: String
-) : SnippetComponent {
+) : CardComponent {
     override fun render(): Map<String, Any> {
         val sym = if (currency == "RUB") "₽" else currency
         val items = mutableListOf<Map<String, Any>>(

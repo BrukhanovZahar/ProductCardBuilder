@@ -1,13 +1,13 @@
 package com.productcard.builder.component
 
-import com.productcard.builder.model.DiscoverySnippetConfigContext
+import com.productcard.builder.model.CardRenderContext
 
 class GalleryComponentConfig(
     private val widthDp: Int  = 160,
     private val heightDp: Int = 160
-) : ProductSnippetComponentVisualConfig {
+) : CardComponentConfig {
     override val isRequired = true
-    override fun createComponent(context: DiscoverySnippetConfigContext): SnippetComponent? {
+    override fun createComponent(context: CardRenderContext): CardComponent? {
         if (context.payload.gallery.imageUrlsCount == 0) return null
         return GalleryComponent(context.payload.gallery.imageUrlsList.first(), widthDp, heightDp)
     }
@@ -17,7 +17,7 @@ class GalleryComponent(
     private val imageUrl: String,
     private val widthDp: Int,
     private val heightDp: Int
-) : SnippetComponent {
+) : CardComponent {
     override fun render(): Map<String, Any> = mapOf(
         "type"      to "div_image",
         "image_url" to imageUrl,

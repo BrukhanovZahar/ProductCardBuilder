@@ -3,10 +3,10 @@
 ProductCardServiceImpl::ProductCardServiceImpl(const ProductLoader& loader)
     : handler_(loader) {}
 
-grpc::Status ProductCardServiceImpl::GetSnippets(
+grpc::Status ProductCardServiceImpl::GetCards(
     grpc::ServerContext*,
-    const market::snippet::v1::GetSnippetsRequest* req,
-    market::snippet::v1::GetSnippetsResponse* resp) {
+    const card::v1::GetCardsRequest* req,
+    card::v1::GetCardsResponse* resp) {
     *resp = handler_.Handle(*req);
     return grpc::Status::OK;
 }

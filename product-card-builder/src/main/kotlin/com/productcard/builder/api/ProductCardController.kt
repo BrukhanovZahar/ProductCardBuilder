@@ -15,14 +15,14 @@ data class ProductCardRequest(
 class ProductCardController(private val service: ProductCardBuilderService) {
 
     @PostMapping
-    fun getSnippets(@RequestBody req: ProductCardRequest): ResponseEntity<Any> =
-        ResponseEntity.ok(mapOf("snippets" to service.buildSnippets(req.offerIds, req.surface, req.themeOverride)))
+    fun getCards(@RequestBody req: ProductCardRequest): ResponseEntity<Any> =
+        ResponseEntity.ok(mapOf("cards" to service.buildCards(req.offerIds, req.surface, req.themeOverride)))
 
     @PostMapping("/preview")
     fun preview(@RequestBody req: ProductCardRequest): ResponseEntity<Any> {
         val id = req.offerIds.firstOrNull()
             ?: return ResponseEntity.badRequest().body(mapOf("error" to "offerIds is empty"))
-        val results = service.buildSnippets(listOf(id), req.surface, req.themeOverride)
+        val results = service.buildCards(listOf(id), req.surface, req.themeOverride)
         if (results.isEmpty()) return ResponseEntity.notFound().build()
         return ResponseEntity.ok(results.first())
     }

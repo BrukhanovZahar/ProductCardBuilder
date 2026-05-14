@@ -3,7 +3,7 @@
 class GalleryBuilder : public OfferBasedBuilder {
 public:
     GalleryBuilder(const ProductData& data, int max_images);
-    void Build(market::snippet::v1::TProductSnippet& snippet) const override;
+    void Build(card::v1::TProductCard& card) const override;
 private:
     int max_images_;
 };

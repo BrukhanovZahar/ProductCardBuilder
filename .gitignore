@@ -4,3 +4,4 @@ product-card-service/cmake-build-debug/
 product-card-service/cmake-build-release/
 product-card-builder/build/
 product-card-builder/.gradle/
+product-card-builder/.kotlin/

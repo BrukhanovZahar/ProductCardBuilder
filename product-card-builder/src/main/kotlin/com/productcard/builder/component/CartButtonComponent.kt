@@ -1,16 +1,16 @@
 package com.productcard.builder.component
 
-import com.productcard.builder.model.DiscoverySnippetConfigContext
+import com.productcard.builder.model.CardRenderContext
 
-class CartButtonComponentConfig : ProductSnippetComponentVisualConfig {
-    override fun createComponent(context: DiscoverySnippetConfigContext): SnippetComponent? {
+class CartButtonComponentConfig : CardComponentConfig {
+    override fun createComponent(context: CardRenderContext): CardComponent? {
         val b = context.payload.cartButton
         if (b.offerId.isBlank()) return null
         return CartButtonComponent(b.inCart)
     }
 }
 
-class CartButtonComponent(private val inCart: Boolean) : SnippetComponent {
+class CartButtonComponent(private val inCart: Boolean) : CardComponent {
     override fun render(): Map<String, Any> = mapOf(
         "type"                         to "div_container",
         "orientation"                  to "horizontal",

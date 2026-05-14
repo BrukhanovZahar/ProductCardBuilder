@@ -1,24 +1,24 @@
 package com.productcard.builder.service
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.productcard.builder.client.SnippetServiceGrpcClient
-import com.productcard.builder.model.DiscoverySnippetConfigContext
-import com.productcard.builder.model.ServiceSnippetThemeType
-import com.productcard.builder.registry.DiscoverySnippetConfigRegistry
+import com.productcard.builder.client.CardServiceGrpcClient
+import com.productcard.builder.model.CardRenderContext
+import com.productcard.builder.model.CardThemeType
+import com.productcard.builder.registry.CardRenderConfigRegistry
 import com.productcard.builder.render.DivKitRenderer
-import com.snippets.proto.ESurface
-import com.snippets.proto.TProductSnippet
+import com.productcard.proto.ESurface
+import com.productcard.proto.TProductCard
 import org.springframework.stereotype.Service
 
 @Service
 class ProductCardBuilderService(
-    private val grpcClient: SnippetServiceGrpcClient,
-    private val registry:   DiscoverySnippetConfigRegistry,
+    private val grpcClient: CardServiceGrpcClient,
+    private val registry:   CardRenderConfigRegistry,
     private val mapper:     ObjectMapper
 ) {
     private val renderer = DivKitRenderer()
 
-    fun buildSnippets(
+    fun buildCards(
         offerIds:      List<String>,
         surface:       String,
         themeOverride: String = ""
@@ -28,16 +28,16 @@ class ProductCardBuilderService(
             "MODEL_CARD" -> ESurface.MODEL_CARD
             else         -> ESurface.SEARCH
         }
-        val response = grpcClient.getSnippets(offerIds, eSurface, themeOverride)
-        return response.snippetsList.map { renderSnippet(it) }
+        val response = grpcClient.getCards(offerIds, eSurface, themeOverride)
+        return response.cardsList.map { renderCard(it) }
     }
 
-    private fun renderSnippet(snippet: TProductSnippet): Any {
-        val themeType = ServiceSnippetThemeType.from(snippet.themeType)
+    private fun renderCard(card: TProductCard): Any {
+        val themeType = CardThemeType.from(card.themeType)
         val config    = registry.getConfig(themeType)
-        val context   = DiscoverySnippetConfigContext(
-            offerId   = snippet.snippetId,
-            payload   = snippet.productPayload,
+        val context   = CardRenderContext(
+            offerId   = card.cardId,
+            payload   = card.productPayload,
             themeType = themeType
         )
         val divKitMap = renderer.render(config, context)

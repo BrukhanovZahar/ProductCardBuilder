@@ -1,15 +1,15 @@
 package com.productcard.builder.factory.config
 
 import com.productcard.builder.component.*
-import com.productcard.builder.factory.DiscoverySnippetConfigFactory
-import com.productcard.builder.model.DiscoverySnippetConfig
-import com.productcard.builder.model.ServiceSnippetThemeType
+import com.productcard.builder.factory.CardRenderConfigFactory
+import com.productcard.builder.model.CardRenderConfig
+import com.productcard.builder.model.CardThemeType
 import org.springframework.stereotype.Component
 
 @Component
-class GridFullConfigFactory : DiscoverySnippetConfigFactory {
-    override val themeType = ServiceSnippetThemeType.GRID_FULL
-    override fun create() = DiscoverySnippetConfig(
+class GridFullConfigFactory : CardRenderConfigFactory {
+    override val themeType = CardThemeType.GRID_FULL
+    override fun create() = CardRenderConfig(
         themeType        = themeType,
         componentConfigs = listOf(
             GalleryComponentConfig(300, 240),

@@ -1,16 +1,16 @@
 package com.productcard.builder.component
 
-import com.productcard.builder.model.DiscoverySnippetConfigContext
+import com.productcard.builder.model.CardRenderContext
 
-class DeliveryComponentConfig : ProductSnippetComponentVisualConfig {
-    override fun createComponent(context: DiscoverySnippetConfigContext): SnippetComponent? {
+class DeliveryComponentConfig : CardComponentConfig {
+    override fun createComponent(context: CardRenderContext): CardComponent? {
         val text = context.payload.delivery.text
         if (text.isBlank()) return null
         return DeliveryComponent(text)
     }
 }
 
-class DeliveryComponent(private val text: String) : SnippetComponent {
+class DeliveryComponent(private val text: String) : CardComponent {
     override fun render(): Map<String, Any> = mapOf(
         "type"       to "div_text",
         "text"       to text,

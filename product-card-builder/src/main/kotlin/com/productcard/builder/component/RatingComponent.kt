@@ -1,16 +1,16 @@
 package com.productcard.builder.component
 
-import com.productcard.builder.model.DiscoverySnippetConfigContext
+import com.productcard.builder.model.CardRenderContext
 
-class RatingComponentConfig : ProductSnippetComponentVisualConfig {
-    override fun createComponent(context: DiscoverySnippetConfigContext): SnippetComponent? {
+class RatingComponentConfig : CardComponentConfig {
+    override fun createComponent(context: CardRenderContext): CardComponent? {
         val r = context.payload.rating
         if (r.value <= 0f) return null
         return RatingComponent(r.value, r.count)
     }
 }
 
-class RatingComponent(private val value: Float, private val count: Int) : SnippetComponent {
+class RatingComponent(private val value: Float, private val count: Int) : CardComponent {
     override fun render(): Map<String, Any> {
         val full  = value.toInt().coerceIn(0, 5)
         val empty = (5 - full).coerceIn(0, 5)

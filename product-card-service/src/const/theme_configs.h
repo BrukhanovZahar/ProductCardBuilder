@@ -15,4 +15,4 @@ struct ThemeConfig {
     bool is_horizontal     = false;
 };
 
-extern const std::unordered_map<market::snippet::v1::EThemeType, ThemeConfig> kThemeConfigs;
+extern const std::unordered_map<card::v1::EThemeType, ThemeConfig> kThemeConfigs;

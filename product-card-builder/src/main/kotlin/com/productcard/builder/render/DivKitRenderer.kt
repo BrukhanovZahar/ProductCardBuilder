@@ -1,27 +1,27 @@
 package com.productcard.builder.render
 
-import com.productcard.builder.component.SnippetComponent
-import com.productcard.builder.model.DiscoverySnippetConfig
-import com.productcard.builder.model.DiscoverySnippetConfigContext
+import com.productcard.builder.component.CardComponent
+import com.productcard.builder.model.CardRenderConfig
+import com.productcard.builder.model.CardRenderContext
 
 class DivKitRenderer {
 
     fun render(
-        config: DiscoverySnippetConfig,
-        context: DiscoverySnippetConfigContext
+        config: CardRenderConfig,
+        context: CardRenderContext
     ): Map<String, Any> {
         val components = config.componentConfigs.mapNotNull { it.createComponent(context) }
         val card = if (config.isHorizontal) buildHorizontalCard(components, config.widthDp)
                    else buildVerticalCard(components, config.widthDp)
         return mapOf(
-            "log_id"    to "snippet_${context.offerId}",
+            "log_id"    to "card_${context.offerId}",
             "card"      to card,
             "templates" to emptyMap<String, Any>()
         )
     }
 
     private fun buildVerticalCard(
-        components: List<SnippetComponent>,
+        components: List<CardComponent>,
         widthDp: Int
     ): Map<String, Any> {
         val div = mapOf(
@@ -39,7 +39,7 @@ class DivKitRenderer {
     }
 
     private fun buildHorizontalCard(
-        components: List<SnippetComponent>,
+        components: List<CardComponent>,
         widthDp: Int
     ): Map<String, Any> {
         val imageItem    = components.firstOrNull()?.render()
