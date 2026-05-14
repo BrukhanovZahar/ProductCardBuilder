@@ -1,7 +1,6 @@
 .idea/
 product-card-service/build/
-product-card-service/cmake-build-debug/
-product-card-service/cmake-build-release/
+product-card-service/cmake-build-*/
 product-card-builder/build/
 product-card-builder/.gradle/
 product-card-builder/.kotlin/

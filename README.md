@@ -31,7 +31,7 @@ product-card-service/data/products.json
 ### Требования
 
 - macOS: `brew install grpc protobuf nlohmann-json cmake`
-- JDK 17+, Gradle (через wrapper)
+- JDK 21+, Gradle (через wrapper)
 
 ### C++ сервис (порт 50051)
 
